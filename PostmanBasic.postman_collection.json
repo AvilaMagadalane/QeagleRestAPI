@@ -49,7 +49,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"short_description\": \"Test\",\r\n    \"description\": \"Demo\"\r\n}",
+							"raw": "/*{\r\n    \"short_description\": \"Test\",\r\n    \"description\": \"Demo\"\r\n}*/\r\n{\r\n    \"short_description\": \"{{Short_Description}}\",\r\n    \"description\": \"{{category}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
