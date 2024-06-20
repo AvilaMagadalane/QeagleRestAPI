@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "c27dcec1-3a6c-4fab-a75d-69ab24763504",
+		"name": "RestAssureJira",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36324145"
+	},
+	"item": [
+		{
+			"name": "CreateStroy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp = pm.response.json();\r",
+							"var id = resp.id;\r",
+							"pm.globals.set(\"IssueId\", id);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"project\": {\r\n            \"key\": \"SCRUM\"\r\n        },\r\n        \"summary\": \"create issue in RA project\",\r\n        \"description\": \"Creating of an issue using project keys and issue type names using the REST API\",\r\n        \"issuetype\": {\r\n            \"name\": \"Bug\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://avilamagadalane-1718867426176.atlassian.net/rest/api/2/issue/",
+					"protocol": "https",
+					"host": [
+						"avilamagadalane-1718867426176",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetStory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://avilamagadalane-1718867426176.atlassian.net/rest/api/2/issue/{{IssueId}}",
+					"protocol": "https",
+					"host": [
+						"avilamagadalane-1718867426176",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{IssueId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateStory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"description\": \"Scrum\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://avilamagadalane-1718867426176.atlassian.net/rest/api/2/issue/{{IssueId}}",
+					"protocol": "https",
+					"host": [
+						"avilamagadalane-1718867426176",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{IssueId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteStory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://avilamagadalane-1718867426176.atlassian.net/rest/api/2/issue/{{IssueId}}",
+					"protocol": "https",
+					"host": [
+						"avilamagadalane-1718867426176",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{IssueId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "ATATT3xFfGF0c2a-qVYLe1ay08KZqb1vWFLkM-o5zSDOg6XVBtAjBHF2bWSfI00nj7ASCTFtVB0P4n-YOg2U0pWcGSjVQq1Zoxgqb_Nl93Rfucw7I6Tp8cLEwkYeSNuOMVyXDtYPV7A_wUb1xNEKWAhc7liLbZLPner8skuUArXD2iUfeXoTV5s=A23AC6BF",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "avilamagadalane@gmail.com",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
