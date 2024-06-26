@@ -1,0 +1,25 @@
+Feature: RestAssure
+
+
+Background:
+Given Set Base URI
+And Get Authentication as 'admin' and 'h*@gB4CK2wwM'
+
+
+Scenario: Create Incident
+When Create incident with requestbody '{"short_description": "test"}'
+Then Validate the status code as 201
+
+Scenario: Update Incident
+When Update incident with requestbody '{"short_description": "testDescription"}'
+Then Validate the status code as 200
+
+Scenario: Get Incident
+When Get all incidents
+Then Validate the status code as 200
+
+Scenario: Delete Incident
+When Delete incidents
+Then Validate the status code as 204
+
+
